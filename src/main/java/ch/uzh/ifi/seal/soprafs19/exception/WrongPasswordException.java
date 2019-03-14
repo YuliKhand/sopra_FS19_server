@@ -1,0 +1,8 @@
+package ch.uzh.ifi.seal.soprafs19.exception;
+
+public class WrongPasswordException extends RuntimeException {
+
+    public WrongPasswordException() {
+        super("The password is wrong.");
+    }
+}
