@@ -19,10 +19,6 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	//@NotBlank with javax.validation -> data is automatically checked to not be empty
-	@Column(nullable = false)
-	private String name;
 	
 	@Column(nullable = false, unique = true) 
 	private String username;
@@ -32,6 +28,9 @@ public class User implements Serializable {
 
 	@Column(nullable = false, unique = true) 
 	private String token;
+
+	@Column(nullable = false)
+	private String birthday;
 
 	@Column(nullable = false)
 	private UserStatus status;
@@ -58,6 +57,10 @@ public class User implements Serializable {
 	public String getPassword() { return password; }
 
 	public void setPassword(String password) { this.password = password; }
+
+	public String getBirthday() { return birthday; }
+
+	public void setBirthday(String birthday) { this.birthday = birthday; }
 
 	public String getToken() {
 		return token;

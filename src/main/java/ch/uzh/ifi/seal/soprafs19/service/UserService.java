@@ -33,6 +33,8 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
+    public User getUserbyUname(String uname) { return this.userRepository.findByUsername(uname);}
+
     public User createUser(User newUser) {
         User element = this.userRepository.findByUsername(newUser.getUsername());
         if (element!=null){

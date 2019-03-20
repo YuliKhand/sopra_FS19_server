@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 
 //not here
@@ -33,5 +35,14 @@ public class UserController {
     @PostMapping("/users/login")
     User loginUser(@RequestBody User someUser) {return this.service.loginUser(someUser);}
 
+    @GetMapping("/users/{username}")
+    ResponseEntity userByUsername(@PathVariable String username) {
+
+        User prof = service.getUserbyUname(username);
+        if (prof != null)
+            return ResponseEntity.status(HttpStatus.OK).body(prof);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is no user with username " + username + " .");
+    }
 
 }
